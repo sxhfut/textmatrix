@@ -14,6 +14,8 @@ TextMatrix是基于标准C++开发的一个跨平台(Windows,Linux)的用于文�
 
 由于项目实现的时间比较早，仍然有很多要改进的地方，比方说类的声明和定义接口不够清晰。还有许多功能未实现。K-NearestNeighbor 方法在文本上万的时候太慢，需要用kdd树之类的提速；文本编码应该支持UTF8；基于后缀树抽取子串特征的KeySubString在支持中文时采用的是一种经过简化的基于单字节的方案，有时间改成以汉字为处理单位；添加更多的机器学习方法；更多的分词，降维或特征选择的方法。 
 
+相关软件，文本分类试验包，数据集均可以从我的[http://nlp.csai.tsinghua.edu.cn/~lj/ 主页]下载
+
 参考文献：
 {{{
 【1】 Stemming Algorithms: Snowball. http://snowball.tartarus.org/. 
