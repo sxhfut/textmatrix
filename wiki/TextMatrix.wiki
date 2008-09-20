@@ -1,4 +1,5 @@
 #labels 介绍
+{{{
 TextMatrix是基于标准C++开发的一个跨平台(Windows,Linux)的用于文本分类或挖掘的开源项目。最早开始于2006年底，是我在学习C++的过程中逐渐开发的。 
 可以同时处理中英文文本(目前支持的中文文本编码格式是GB2312,GBK)，具有中文分词，英文Stemming,停用词滤除，抽取基于字或词的Ngram特征，生成基于SuffixTree的KeySubStringGroup特征，生成特征词表，按各类权重公式计算特征权重，降维，性能评测等功能，其输出文件兼容SVMlight,libsvm,fastann,cluto等软件所需的格式。功能的试验过程中参考了很多的相关文献和软件。 
 
@@ -6,7 +7,7 @@ TextMatrix是基于标准C++开发的一个跨平台(Windows,Linux)的用于文�
 
 为了展示在大批量的实验中如何使用TextMatrix从头到位完成从文本处理到最终性能评测运行的全过程，我也同时公开了一个Linux下的基于 shell的文本分类试验运行包，其主要试验是完成对文本的基于后缀树的KeySubStringGroup特征额抽取和文本分类。其中展示了TextMatrix的部分功能(未使用中文分词，降维等功能)。具体使用方法可以参见TextMatrix帮助手册，文本试验包中的语料库则是我公开的 16000篇宾馆评论情感分类语料库v1.0。 
 
-项目从概念上来分，包括文本预处理(分词，stemming,ngram生成，词表生成),特征权重向量生成，降维，性能评测几大部分。其中英文单词的Stemming功能使用了Snowball\[1\],中文分词参考了\[2\],在此基础上改进和支持了GBK编码,词表来自 北大的共享资源，部分权重公式参考了[3],以及$\chi^2$降维方法公式参考了[4],性能评测的代码参考了Lingpipe项目[5]的相应Java代码,人工神经网络则是基于Fastann的基于c的库[6]。基于后缀树的KeySubStringGroup抽取代码基于Dell Zhang在KDD06所发表的论文[7]所附带的仅支持英文的演示性代码[8]基础上修改的，在与他的邮件来往中，我获得帮助与指导，将其改进为支持中文处理，并解决了数据量大时提示out of memory的问题。 
+项目从概念上来分，包括文本预处理(分词，stemming,ngram生成，词表生成),特征权重向量生成，降维，性能评测几大部分。其中英文单词的Stemming功能使用了Snowball[1],中文分词参考了[2],在此基础上改进和支持了GBK编码,词表来自 北大的共享资源，部分权重公式参考了[3],以及$\chi^2$降维方法公式参考了[4],性能评测的代码参考了Lingpipe项目[5]的相应Java代码,人工神经网络则是基于Fastann的基于c的库[6]。基于后缀树的KeySubStringGroup抽取代码基于Dell Zhang在KDD06所发表的论文[7]所附带的仅支持英文的演示性代码[8]基础上修改的，在与他的邮件来往中，我获得帮助与指导，将其改进为支持中文处理，并解决了数据量大时提示out of memory的问题。 
 
 用于存储多个文本向量可以看做是一个特征与文档的矩阵，不存在的特征被认为是0。为了更有效地利用空间，采用稀疏矩阵存储。实际的数据结构是用STL中的Map实现的稀疏矩阵类，头文件和主文件分别是SparseMatrix.h和SparseMatrix.cpp,实现了基本的对稀疏矩阵的访问，然后TextMatrix继承了SparseMatrix类，并进一步实现了更多与文本处理有关的相关功能。这里的矩阵只是用于存储与处理多个文本向量，与线性代数矩阵运算中矩阵概念不同，项目叫做TextMatrix,也是来源于此。 
 
@@ -25,3 +26,5 @@ Proceedings of ICML ’97: Proceedings of the Fourteenth International Conferenc
 [7] Zhang D, LeeWS. Extracting key-substring-group features for text classification. Proceedings of In Proceedings of the 12th ACM SIGKDD international conference on Knowledge discovery and data mining (KDD.06. ACM Press, 2006. 474–483.
 [8] The C program for Key-Substring-Group feature extraction. http://www.dcs.bbk.ac.uk/~Dell/publications/dellzhang kdd2006 supplement.html. 
 [9] Li J, Sun M. Experimental Study on Sentiment Classification of Chinese Review using Machine Learning Techniques. Proceedings of Procedings of IEEE International Conference on Natural Language Processing and Knowledge Engineering, 2007.
+
+}}}
